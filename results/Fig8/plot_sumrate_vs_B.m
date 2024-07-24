@@ -50,5 +50,5 @@ hold off;
 
 % Set axis limits and x-ticks
 xlim([512, 2048]);
-ylim([25, 48]);
+ylim([26, 46]);
 set(gca, 'XTick', [512, 768, 1024, 1280, 1536, 1792, 2048]);

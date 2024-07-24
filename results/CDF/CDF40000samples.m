@@ -9,7 +9,7 @@ B_value = 2048;   % Single B value
 HDL_test = load('HDL_test.mat').HDL_test;
 
 %% Load and process data from AE
-data = load('H_predict_complex_all_B_values.mat');
+data = load('H_predict_complex_all_B_values_40000samples.mat');
 all_H_predict_complex = data.all_H_predict_complex;
 
 % Initialize cell array for reconstructed channel matrices

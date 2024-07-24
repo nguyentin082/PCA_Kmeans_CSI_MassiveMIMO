@@ -52,19 +52,19 @@ c = l.get_channels;
 
 %% Postprocessing
 
-if singleFreq
+if singleFreq % chỉ sử dụng một tần số duy nhất (tần số trung tâm)
     H = single(zeros(nAntX*nAntY,nc,nRxs));
     for iRx = 1:nRxs
         H(:,:,iRx) = squeeze(c(iRx,1).fr(B,nc));
     end
-else
+else %  sử dụng hai tần số (tải lên và tải xuống)
     BTot = abs(fDL - fUL) + B;
     Df = B / nc;
     ncTot = BTot / Df;
     carriers = [1:nc ncTot-nc+1:ncTot]/ncTot;
     HTmp = single(zeros(nAntX*nAntY,2*nc,nRxs));
     %%
-    if nPaths ~= -1
+    if nPaths ~= -1 % Lọc các đường truyền yếu
         for iRx = 1:nRxs
             cMat = squeeze(c(iRx,1).coeff);
             pathPowers = sum(abs(cMat).^2);
@@ -79,7 +79,7 @@ else
         end
     end
     %%
-    for iRx = 1:nRxs
+    for iRx = 1:nRxs % Lấy hệ số kênh cho hai tần số
         HTmp(:,:,iRx) = squeeze(c(iRx,1).fr(BTot,carriers));
     end
     H = single(zeros(nAntX*nAntY,nc,nRxs,2));

@@ -15,8 +15,8 @@ H_reconstructed = cell(1, 3);
 HUL_train_compl_tmp_mean = load('HUL_train_compl_tmp_mean.mat').HUL_train_compl_tmp_mean;
 
 % Load the reconstructed channel matrices for each B value
-file_names = {'AE512trainwith5000samples(B=2048)/H_test_real_predict4bit.mat', 'AE256trainwith5000samples(B=2048)/H_test_real_predict8bit.mat', ...
-              'AE128trainwith5000samples(B=2048)/H_test_real_predict16bit.mat'};
+file_names = {'AE512trainwith40000samples(B=2048)/H_test_real_predict4bit.mat', 'AE256trainwith40000samples(B=2048)/H_test_real_predict8bit.mat', ...
+              'AE128trainwith40000samples(B=2048)/H_test_real_predict16bit.mat'};
 for i = 1:3
     H_reconstructed{i} = load(file_names{i}).H_test_real_predict;
     fprintf('Size of H_reconstructed{%d} (B = 2048): %s\n', i, mat2str(size(H_reconstructed{i})));
@@ -49,4 +49,4 @@ for b_idx = 1:3
 end
 
 % Save all_H_predict_complex to a .mat file for later use
-save('H_predict_complex_all_B_values.mat', 'all_H_predict_complex', '-v7.3');
+save('H_predict_complex_all_B_values_40000samples.mat', 'all_H_predict_complex', '-v7.3');
